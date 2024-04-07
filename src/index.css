@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  @apply prose lg:prose-xl max-w-none;
+  @apply prose lg:prose-xl prose-zinc max-w-none m-10;
 }
 
 .App {
   @apply max-w-6xl mx-auto px-4;
+}
+
+.map-container {
+  @apply h-full min-h-96 shadow-md;
 }
