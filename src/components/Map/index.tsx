@@ -38,6 +38,15 @@ const Turkey = {
   },
 };
 
+const Confirmation = (geo: any, date?: string) => {
+  const confirmation = window.confirm(
+    `Do you want to go to the ${geo.properties.name} page?`,
+  );
+  if (confirmation) {
+    window.location.href = `/country/${geo.id}/${date}`;
+  }
+};
+
 const WorldMap: React.FC = ({
   setTooltipContent,
 }: {
@@ -54,7 +63,7 @@ const WorldMap: React.FC = ({
     properties: { name: "China" },
   });
 
-  const handleCountryClick = async (geo: any) => {
+  const handleCountryClick = async (geo: any, confirmation: boolean) => {
     setGeo(geo);
     setLoading(true);
     const countryCode: string = geo.id;
@@ -84,11 +93,16 @@ const WorldMap: React.FC = ({
       .then(() => {
         setError(null);
         setLoading(false);
+      })
+      .then(() => {
+        if (confirmation) {
+          Confirmation(geo, date);
+        }
       });
   };
 
   useEffect(() => {
-    handleCountryClick(geo);
+    handleCountryClick(geo, false);
     setReportLoading(true);
     fetchTotalReport(date)
       .then((data) => {
@@ -156,7 +170,7 @@ const WorldMap: React.FC = ({
                 geography={geo}
                 fill={"#eeeeee"}
                 stroke={"#a8a8a8"}
-                onClick={() => handleCountryClick(geo)}
+                onClick={() => handleCountryClick(geo, true)}
                 onMouseEnter={() => {
                   const { name } = geo.properties;
                   setTooltipContent && setTooltipContent(name);
