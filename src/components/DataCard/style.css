@@ -1,0 +1,16 @@
+.country-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 20px;
+  width: 300px;
+}
+
+.card {
+  @apply border border-2 rounded-lg shadow-lg p-6 w-full max-w-3xl;
+}
