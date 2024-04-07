@@ -28,7 +28,9 @@ const CovidDataCard: React.FC<{
         data && (
           <a href={to || "#"} className={"not-prose"}>
             <div className={"flex items-baseline gap-4 mb-2"}>
-              <h2 className={"p-0 m-0 text-4xl font-bold"}>{title}</h2>
+              <h2 className={"p-0 m-0 text-2xl md:text-4xl font-bold"}>
+                {title}
+              </h2>
               <h4 className="opacity-80">
                 {new Date(data.last_update).toLocaleDateString("en-US", {
                   year: "numeric",
