@@ -6,6 +6,7 @@ import ProvinceTable from "../components/ProvinceTable";
 import Error from "../components/Error";
 import MapChart from "../components/Map/MapChart";
 import { countries } from "../utils/countries";
+import Form from "../components/Form";
 
 function CountryPage() {
   const data = useLoaderData() as CountryData[];
@@ -32,6 +33,12 @@ function CountryPage() {
   } else
     return (
       <>
+        <button
+          onClick={() => (window.location.href = "/")}
+          className={"mb-6 bg-blue-50 p-2 rounded-md text-blue-600"}
+        >
+          {"<"} Return Home
+        </button>
         <h1 className={"mb-2"}>{data[0].region.name}</h1>
         <h3 className={"mt-0"}>
           {new Date(data[0].date).toLocaleDateString("en-us", {
@@ -40,6 +47,7 @@ function CountryPage() {
             day: "numeric",
           })}
         </h3>
+        <Form initialCountry={isoCode} initialDate={data[0].date} />
         {isoCode && (
           <MapChart
             longitude={countries[isoCode].longitude}

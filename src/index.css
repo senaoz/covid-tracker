@@ -13,3 +13,23 @@ body {
 .map-container {
   @apply h-full min-h-96 shadow-md;
 }
+
+.date-selector {
+  @apply grid pb-6 sm:flex sm:justify-center sm:items-center sm:p-6 gap-2;
+}
+
+.date-selector input, select {
+  @apply border border-gray-300 rounded-md px-2 py-1 min-h-12;
+}
+
+.date-selector label {
+  @apply px-2;
+}
+
+.date-selector input[type="submit"] {
+  @apply hover:bg-gray-200 cursor-pointer;
+}
+
+.date-selector input[type="date"] {
+  @apply min-w-36;
+}
