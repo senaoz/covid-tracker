@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import CountryPage from "./pages/CountryPage";
 import { fetchReports } from "./services/fetchReports";
@@ -16,12 +20,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "country/:isoCode/:date?",
+    path: "/country/:isoCode/:date?",
     element: <CountryPage />,
     loader: async ({ request, params }) => {
       return fetchReports(params.isoCode, params.date);
     },
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "*",
+    element: <Navigate to={"/"} replace={true} />,
   },
 ]);
 

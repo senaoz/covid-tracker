@@ -27,9 +27,29 @@ function CountryPage() {
       : [];
 
   if (data === undefined) {
-    return <Loading />;
+    return (
+      <>
+        <button
+          onClick={() => (window.location.href = "/")}
+          className={"mb-6 bg-blue-50 p-2 rounded-md text-blue-600"}
+        >
+          {"<"} Return Home
+        </button>
+        <Loading />
+      </>
+    );
   } else if (data.length === 0) {
-    return <Error message={"No data found for this country"} />;
+    return (
+      <>
+        <button
+          onClick={() => (window.location.href = "/")}
+          className={"mb-6 bg-blue-50 p-2 rounded-md text-blue-600"}
+        >
+          {"<"} Return Home
+        </button>
+        <Error message={"No data found for this country"} />
+      </>
+    );
   } else
     return (
       <>
@@ -56,7 +76,6 @@ function CountryPage() {
             markers={markers}
           />
         )}
-
         <ProvinceTable countryData={data} />
       </>
     );

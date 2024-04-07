@@ -142,7 +142,7 @@ const WorldMap: React.FC = ({
           />
         )}
         <CovidDataCard
-          to={`country/${countryInfo?.iso}/${date}`}
+          to={`/country/${countryInfo?.iso}/${date}`}
           data={countryInfo}
           title={
             `${countryInfo.name}: ${countryInfo.region.province}` || "Unknown"
