@@ -10,6 +10,17 @@ This is a simple Covid-19 tracker that shows the number of cases, recoveries and
 - Redux
 - TypeScript
 
+## Docker Image
+
+You can run the app in a Docker container by running the following command:
+
+```bash
+docker build -t covid-19-tracker .
+docker run -d -p 3000:3000 covid-19-tracker
+```
+
+Then, open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 <hr />
 
 ## Available Scripts
