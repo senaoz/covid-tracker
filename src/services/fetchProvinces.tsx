@@ -1,10 +1,10 @@
-import { ErrorResponse, ReportData } from "./fetchReports";
-import { rapidApiHeaders, rapidApiURL } from "./config";
 import axios from "axios";
+import { ErrorResponse } from "./fetchReports";
+import { rapidApiHeaders, rapidApiURL } from "./config";
 
 export interface ProvincesData {
-  iso: string;
-  name: string;
+  iso?: string;
+  name?: string;
   province: string;
   lat: string;
   long: string;

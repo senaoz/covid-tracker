@@ -1,6 +1,6 @@
+import axios from "axios";
 import { ErrorResponse } from "./fetchReports";
 import { rapidApiHeaders, rapidApiURL } from "./config";
-import axios from "axios";
 
 export interface RegionData {
   iso: string;

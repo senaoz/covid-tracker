@@ -1,27 +1,13 @@
 import { rapidApiHeaders, rapidApiURL } from "./config";
+import { CountryData, ReportData } from "../interfaces";
 import axios from "axios";
 
 export interface ErrorResponse {
   message: string;
 }
-
-export interface ReportData {
-  date: string;
-  last_update: string;
-  confirmed: number;
-  confirmed_diff: number;
-  deaths: number;
-  deaths_diff: number;
-  recovered: number;
-  recovered_diff: number;
-  active: number;
-  active_diff: number;
-  fatality_rate: number;
-}
-
-export const fetchTotalReports = async (
+export const fetchTotalReport = async (
   date?: string,
-): Promise<ReportData[] | ErrorResponse> => {
+): Promise<ReportData | ErrorResponse> => {
   const options = {
     method: "GET",
     url: `${rapidApiURL}/reports/total`,
@@ -34,7 +20,7 @@ export const fetchTotalReports = async (
     if (response.status !== 200) {
       throw new Error("Failed to fetch data");
     }
-    const result: ReportData[] = await response.data.data;
+    const result: ReportData = await response.data.data;
     return result;
   } catch (error) {
     // @ts-ignore
@@ -43,11 +29,11 @@ export const fetchTotalReports = async (
 };
 
 export const fetchReports = async (
-  region_province?: string,
   iso?: string,
-  region_name?: string,
   date?: string,
-): Promise<ReportData[] | ErrorResponse> => {
+  region_province?: string,
+  region_name?: string,
+): Promise<CountryData[] | ErrorResponse> => {
   const options = {
     method: "GET",
     url: `${rapidApiURL}/reports`,
@@ -65,7 +51,7 @@ export const fetchReports = async (
     if (response.status !== 200) {
       throw new Error("Failed to fetch data");
     }
-    const result: ReportData[] = await response.data.data;
+    const result: CountryData[] = await response.data.data;
     return result;
   } catch (error) {
     // @ts-ignore
