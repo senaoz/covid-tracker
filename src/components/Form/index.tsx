@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import fetchRegions, { RegionData } from "../../services/fetchRegions";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { fetchRegionsData } from "../../redux/actions";
 
 const Form = ({
   initialDate,
@@ -8,11 +10,20 @@ const Form = ({
   initialDate?: string;
   initialCountry?: string;
 }) => {
-  const [regions, setRegions] = React.useState<RegionData[] | undefined>([]);
+  const dispatch = useDispatch();
+  const { regions, loading, error } = useSelector(
+    (state: RootState) => state.rootReducer,
+  );
+
   const [date, setDate] = React.useState<string | undefined>(initialDate);
   const [country, setCountry] = React.useState<string | undefined>(
     initialCountry,
   );
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchRegionsData());
+  }, [dispatch]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,16 +32,6 @@ const Form = ({
     console.log(data.get("country"));
     window.location.href = `/country/${data.get("country")}/${data.get("date")}`;
   };
-
-  useEffect(() => {
-    fetchRegions().then((data) => {
-      if ("message" in data) {
-        console.log(data.message);
-      } else {
-        setRegions(data);
-      }
-    });
-  }, []);
 
   return (
     <>

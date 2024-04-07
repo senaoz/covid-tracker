@@ -6,6 +6,8 @@ import ErrorPage from "./pages/ErrorPage";
 import CountryPage from "./pages/CountryPage";
 import { fetchReports } from "./services/fetchReports";
 import MapPage from "./pages/MapPage";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </>,
 );
