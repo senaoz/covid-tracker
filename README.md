@@ -1,8 +1,6 @@
 # Covid-19 Tracker
 
-This is a simple Covid-19 tracker that shows the number of cases, recoveries and deaths in the world and in each country.
-
-*The data is fetched from the [RapidAPI]( https://rapidapi.com/axisbits-axisbits-default/api/covid-19-statistics/).
+This is a simple Covid-19 tracker that shows the number of cases, recoveries, and deaths in the world and in each country on the map.
 
 ### Technologies
 - Tailwind CSS
@@ -49,3 +47,6 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.
+
+### Data Source
+The data is fetched from the [RapidAPI]( https://rapidapi.com/axisbits-axisbits-default/api/covid-19-statistics/).
